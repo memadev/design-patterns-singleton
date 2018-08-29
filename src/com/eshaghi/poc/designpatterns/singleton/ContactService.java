@@ -7,9 +7,11 @@ public class ContactService {
     private ContactService() {
     }
 
-    public synchronized static ContactService getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new ContactService();
+    public static ContactService getInstance() {
+        synchronized (ContactService.class) {
+            if (INSTANCE == null) {
+                INSTANCE = new ContactService();
+            }
         }
 
         return INSTANCE;
