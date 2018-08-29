@@ -8,9 +8,11 @@ public class ContactService {
     }
 
     public static ContactService getInstance() {
-        synchronized (ContactService.class) {
-            if (INSTANCE == null) {
-                INSTANCE = new ContactService();
+        if (INSTANCE == null) {
+            synchronized (ContactService.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new ContactService();
+                }
             }
         }
 
